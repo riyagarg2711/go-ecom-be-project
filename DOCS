@@ -1,0 +1,15 @@
+// Create go.mod file by command :- go mod init github.com/riyagarg2711/ecom-api-course 
+// Create cmd folder
+// Create internal folder
+// Create two files in cmd folder :- main.go and api.go
+// Start making your code for HTTP server setup in api file by creating structs and also main func in main.go
+// Created products folder in internal and two files handlers.go and services.go
+// Create struct in handlers.go 
+// Create json folder and json.go file in internal
+// Writing sql queries with sqlc
+// Using GOOSE for migrations
+// Create docker compose file
+// Connecting to Postgres
+// Create ENV package so as to maintain different environments (env.go) in internal
+// Create .env file at root
+// Connect to pgadmin and run migration
