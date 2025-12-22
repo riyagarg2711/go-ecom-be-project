@@ -30,16 +30,14 @@ func main() {
 		panic(err)
 
 	}
+	defer conn.Close(ctx)
+
+	logger.Info("connected to database", "dsn", cfg.db.dsn)
 
 	api := application{
 		config: cfg,
 		db: conn,
 	}
-	defer conn.Close(ctx)
-
-	logger.Info("connected to database", "dsn", cfg.db.dsn)
-
-	
 
 	if err := api.run(api.mount()); err != nil {
 		//log.Printf("server has failed to start, err: %s", err)
@@ -47,6 +45,6 @@ func main() {
 		os.Exit(1)
 
 	}
-	// shivam
+
 
 }

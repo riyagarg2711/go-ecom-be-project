@@ -1,10 +1,10 @@
-// Create go.mod file by command :- go mod init github.com/riyagarg2711/ecom-api-course 
+// Create go.mod file by command :- go mod init github.com/riyagarg2711/ecom-api-course
 // Create cmd folder
 // Create internal folder
 // Create two files in cmd folder :- main.go and api.go
 // Start making your code for HTTP server setup in api file by creating structs and also main func in main.go
 // Created products folder in internal and two files handlers.go and services.go
-// Create struct in handlers.go 
+// Create struct in handlers.go
 // Create json folder and json.go file in internal
 // Writing sql queries with sqlc
 // Using GOOSE for migrations
@@ -13,3 +13,20 @@
 // Create ENV package so as to maintain different environments (env.go) in internal
 // Create .env file at root
 // Connect to pgadmin and run migration
+// Create new api FIND PRODUCT BY ID
+// 1) Add query for product by ID in quries.sql file then run [sqlc generate]
+// 2) In internal/products/service.go add
+// type Service interface {
+//	ListProducts(ctx context.Context) ([]repo.Product, error)
+//  GetProductByID(ctx context.Context, id int64) (repo.Product, error)
+//  } AND 
+// func (s *svc) GetProductByID(ctx context.Context, id int64) (repo.Product, error) {
+//	return s.repo.GetProductByID(ctx, id)
+//}
+//3) internal/products/handlers.go add method
+// 4) then add route in api.go
+// 5)  test
+//
+//
+//
+//

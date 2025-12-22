@@ -7,6 +7,8 @@ import (
 
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
+	"github.com/jackc/pgx/v5"
+	repo "github.com/riyagarg2711/ecom-api-course/internal/adapters/postgresql/sqlc"
 	"github.com/riyagarg2711/ecom-api-course/internal/products"
 )
 
@@ -29,10 +31,17 @@ func (app *application) mount() http.Handler {
 		w.Write([]byte("all good"))
 	})
 
-	productService := products.NewService()
+	productService := products.NewService(repo.New(app.db))
 	productHandler := products.NewHandler(productService)
 
-	r.Get("/products",productHandler.ListProducts)
+	r.Route("/products", func(r chi.Router) {
+    	r.Get("/", productHandler.ListProducts)
+    	r.Get("/{id}", productHandler.FindProductByID)
+})
+
+
+	
+
 	return r
 }
 
@@ -53,7 +62,7 @@ func (app *application) run(h http.Handler) error {
 type application struct {
 	config config
 	// logger
-	// db driver
+	db *pgx.Conn
 
 }
 
