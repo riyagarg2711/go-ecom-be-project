@@ -9,6 +9,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/jackc/pgx/v5"
 	repo "github.com/riyagarg2711/ecom-api-course/internal/adapters/postgresql/sqlc"
+	"github.com/riyagarg2711/ecom-api-course/internal/orders"
 	"github.com/riyagarg2711/ecom-api-course/internal/products"
 )
 
@@ -38,9 +39,9 @@ func (app *application) mount() http.Handler {
     	r.Get("/", productHandler.ListProducts)
     	r.Get("/{id}", productHandler.FindProductByID)
 })
-
-
-	
+    orderService := orders.NewService(repo.New(app.db),app.db)
+    ordersHandler := orders.NewHandler(orderService)
+	r.Post("/orders", ordersHandler.PlaceOrder)
 
 	return r
 }
