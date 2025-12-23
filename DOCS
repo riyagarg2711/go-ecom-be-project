@@ -1,3 +1,4 @@
+// COMMAND TO RUN PROJECT :-  docker compose up -d  AND go run cmd/*.go 
 // Create go.mod file by command :- go mod init github.com/riyagarg2711/ecom-api-course
 // Create cmd folder
 // Create internal folder
@@ -22,11 +23,7 @@
 //  } AND 
 // func (s *svc) GetProductByID(ctx context.Context, id int64) (repo.Product, error) {
 //	return s.repo.GetProductByID(ctx, id)
-//}
-//3) internal/products/handlers.go add method
+// }
+// 3) internal/products/handlers.go add method
 // 4) then add route in api.go
 // 5)  test
-//
-//
-//
-//

@@ -33,7 +33,7 @@ func (h *handler) PlaceOrder(w http.ResponseWriter, r *http.Request) {
 
 		if err == ErrProductNotFound {
 			http.Error(w, err.Error(), http.StatusNotFound)
-		return
+			return
 
 		}
 		http.Error(w, err.Error(), http.StatusInternalServerError)

@@ -25,22 +25,20 @@ func NewHandler(service Service) *handler {
 // method
 func (h *handler) ListProducts(w http.ResponseWriter, r *http.Request) {
 	// 1. Call the service -> ListProduct
-	products,err := h.service.ListProducts(r.Context())
+	products, err := h.service.ListProducts(r.Context())
 	if err != nil {
 		log.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 	// 2. Return JSON In a HTTP Response
 
-	
 	json.Write(w, http.StatusOK, products)
 }
 
 func (h *handler) FindProductByID(w http.ResponseWriter, r *http.Request) {
 	idParam := chi.URLParam(r, "id")
 	log.Println("URL:", r.URL.Path)
-log.Println("ID param:", chi.URLParam(r, "id"))
-
+	log.Println("ID param:", chi.URLParam(r, "id"))
 
 	id, err := strconv.ParseInt(idParam, 10, 64)
 	if err != nil {
