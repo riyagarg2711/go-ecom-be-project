@@ -8,7 +8,7 @@
 // Create struct in handlers.go
 // Create json folder and json.go file in internal
 // Writing sql queries with sqlc
-// Using GOOSE for migrations
+// Using GOOSE for migrations and for migration up use command (goose up)
 // Create docker compose file
 // Connecting to Postgres
 // Create ENV package so as to maintain different environments (env.go) in internal
